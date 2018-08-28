@@ -1,0 +1,46 @@
+---
+title: "Chunk 1"
+output: html_document
+---
+
+```{r loading}
+# load packages
+library(tidyverse)
+
+# Loading the Boston city payroll
+
+R version 3.5.1 (2018-07-02) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(tidyverse)
+-- Attaching packages --------------------------------------- tidyverse 1.2.1 --
+v ggplot2 3.0.0     v purrr   0.2.5
+v tibble  1.4.2     v dplyr   0.7.6
+v tidyr   0.8.1     v stringr 1.3.1
+v readr   1.1.1     v forcats 0.3.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+> library(readr)
+> payroll <- read_csv("~/Final/data/bostonpayroll2013.csv")
+```
+
+Let's look at the data in R Markdown with a package called [`DT`](https://rstudio.github.io/DT/) that uses the Datatables [jquery library](https://datatables.net/).
+
+```{r display_data}
+library(DT)
+datatable(payroll)
+```
