@@ -1,0 +1,43 @@
+"0","# load packages"
+"0","library(tidyverse)"
+"0","library(ggplot2)"
+"0","library(sf)"
+"0","library(tigris)"
+"0","library(readr)"
+"0","#Loading data of 48 States excluding Hawaii and Alaska"
+"0","fifty_location <- ""map/cb_2017_us_state_20m/cb_2017_us_state_20m.shp"""
+"0","fifty_states <- st_read(fifty_location)"
+"1","Reading layer `"
+"1","cb_2017_us_state_20m"
+"1","' from data source `"
+"1","C:\Users\yen\Desktop\extra\Final\chunks\map\cb_2017_us_state_20m\cb_2017_us_state_20m.shp"
+"1","' using driver `"
+"1","ESRI Shapefile"
+"1","'"
+"1","
+"
+"1","Simple feature collection with 52 features and 9 fields"
+"1","
+"
+"1","geometry type:  MULTIPOLYGON
+"
+"1","dimension:      XY
+"
+"1","bbox:           "
+"1","xmin: -179.1743 ymin: 17.91377 xmax: 179.7739 ymax: 71.35256"
+"1","
+"
+"1","epsg (SRID):    4269
+"
+"1","proj4string:    +proj=longlat +datum=NAD83 +no_defs
+"
+"0","populations <- read_csv(""map/acs2016_1yr_B02001_04000US55.csv"")"
+"2","Parsed with column specification:
+cols(
+  .default = col_integer(),
+  geoid = col_character(),
+  name = col_character()
+)
+"
+"2","See spec(...) for full column specifications.
+"

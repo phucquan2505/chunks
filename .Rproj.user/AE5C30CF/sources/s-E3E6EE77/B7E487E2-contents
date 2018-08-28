@@ -1,0 +1,92 @@
+library(ggplot2)
+library(sf)
+library(tigris)
+
+
+fifty_location <- "map/cb_2017_us_state_20m/cb_2017_us_state_20m.shp"
+
+fifty_states <- st_read(fifty_location)
+
+
+
+ggplot(fifty_states) + geom_sf()
+
+
+
+library(dplyr)
+
+fifty_states <- left_join(fifty_states, populations,
+                          
+                          by=c("NAME"="name"))
+
+
+
+forty_eight <- fifty_states %>% 
+  
+  filter(NAME!="Hawaii" & NAME!="Alaska" & NAME!="Puerto Rico")
+
+options(tigris_class = "sf")
+fl <- counties("FL", cb=T)
+
+
+
+ggplot(fl) +
+  
+  geom_sf()+
+  
+  theme_void()+
+  
+  theme(panel.grid.major = element_line(colour = "transparent")) +
+  
+  labs(title= "Florida counties")
+
+fl <- counties("FL", cb=T)
+
+
+
+ggplot(fl) +
+  
+  geom_sf()+
+  
+  theme_void()+
+  
+  theme(panel.grid.major = element_line(colour = "transparent")) +
+  
+  labs(title= "Florida counties")
+
+# Add key to .Renviron
+Sys.setenv(CENSUS_KEY="1dcf73576f0be530e2fecd49b74b78cf1d09a4ba")
+# Reload .Renviron
+readRenviron("~/.Renviron")
+# Check to see that the expected key is output in your R console
+Sys.getenv("CENSUS_KEY")
+
+library(censusapi)
+apis <- listCensusApis()
+View(apis)
+
+fl_income <- getCensus(name = "acs/acs5", vintage = 2016, 
+                       
+                       vars = c("NAME", "B19013_001E", "B19013_001M"), 
+                       
+                       region = "county:*", regionin = "state:12")
+
+head(fl_income)
+
+fl4ever <- left_join(fl, fl_income, by=c("COUNTYFP"="county"))
+
+
+
+ggplot(fl4ever) + 
+  
+  geom_sf(aes(fill=B19013_001E), color="white") +
+  
+  theme_void() +
+  
+  theme(panel.grid.major = element_line(colour = 'transparent')) +
+  
+  scale_fill_distiller(palette="green", direction=1, name="Median income") +
+  
+  labs(title="2016 Median income in Fl counties", caption="Source: US Census/ACS5 2016")
+
+ggsave("fl4ever.png")

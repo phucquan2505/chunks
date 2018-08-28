@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1535452596092.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "A57209BA",
+    "lastKnownWriteTime" : 3419473787924512768,
+    "last_content_update" : 1535452596092,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "27A6A98B",
+        "caption" : "fifty_states",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=fifty_states&cache_key=27A6A98B",
+        "displayedObservations" : "52",
+        "environment" : "",
+        "object" : "fifty_states",
+        "preview" : "0",
+        "totalObservations" : "52",
+        "variables" : "31"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
